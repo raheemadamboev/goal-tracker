@@ -4,13 +4,14 @@ import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function App() {
   const [goal, setGoal] = useState("");
+  const [goals, setGoals] = useState<string[]>([]);
 
   const setInput = (input: string) => {
     setGoal(input);
   };
 
   const onAddGoal = () => {
-    console.log(goal)
+    setGoals((currentGoals) => [...goals, goal]);
   };
 
   return (
@@ -26,6 +27,9 @@ export default function App() {
       </View>
       <View />
       <StatusBar style="auto" />
+      {goals.map((mappedGoal) => (
+        <Text>{mappedGoal}</Text>
+      ))}
     </View>
   );
 }
