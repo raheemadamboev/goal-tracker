@@ -8,7 +8,7 @@ export default function App() {
         style={{
           flexDirection: "row",
           justifyContent: "space-between",
-          alignItems: "center"
+          alignItems: "center",
         }}
       >
         <TextInput
@@ -17,7 +17,7 @@ export default function App() {
             width: "70%",
             borderWidth: 1,
             borderColor: "black",
-            padding: 10
+            padding: 10,
           }}
         />
         <Button title="Add Goal" onPress={() => {}} />
