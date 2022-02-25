@@ -1,14 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import {
-  Button,
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Button, FlatList, StyleSheet, TextInput, View } from "react-native";
+import GoalCard from "./components/GoalCard";
 
 export default function App() {
   const [goal, setGoal] = useState("");
@@ -41,11 +34,7 @@ export default function App() {
       <FlatList
         keyExtractor={(item, index) => item.flutter}
         data={goals}
-        renderItem={(goal) => (
-          <View style={styles.cardGoals}>
-            <Text>{goal.item.text}</Text>
-          </View>
-        )}
+        renderItem={(goal) => <GoalCard name={goal.item.text} />}
       />
     </View>
   );
@@ -65,12 +54,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "black",
     padding: 10,
-  },
-  cardGoals: {
-    padding: 10,
-    marginVertical: 5,
-    backgroundColor: "#CCC",
-    borderWidth: 1,
-    borderColor: "black",
   },
 });
