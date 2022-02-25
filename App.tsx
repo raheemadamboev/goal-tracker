@@ -14,20 +14,28 @@ export default function App() {
   };
 
   const onRemoveGoal = (flutter: string) => {
-    setGoals((currentGoals) => {
-      return currentGoals.filter((goal) => goal.flutter !== flutter);
-    });
+    setGoals((currentGoals) =>
+      currentGoals.filter((goal) => goal.flutter !== flutter)
+    );
   };
 
   const onAddGoalPress = () => {
     setModalVisible(true);
   };
 
+  const onCancelGoal = () => {
+    setModalVisible(false);
+  };
+
   return (
     <View style={styles.screen}>
       <StatusBar style="auto" />
       <Button title="Add Goal" onPress={onAddGoalPress} />
-      <GoalInput onAddGoal={onAddGoal} visible={modalVisible} />
+      <GoalInput
+        onAddGoal={onAddGoal}
+        onCancel={onCancelGoal}
+        visible={modalVisible}
+      />
       <FlatList
         keyExtractor={(item, index) => item.flutter}
         data={goals}
