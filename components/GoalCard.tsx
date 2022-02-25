@@ -1,11 +1,15 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Goal } from "./GoalInput";
 
 const GoalCard = (props: Props) => {
   return (
-    <TouchableOpacity onPress={props.onGoalPress} activeOpacity={0.3}>
+    <TouchableOpacity
+      onPress={props.onGoalPress.bind(this, props.goal.flutter)}
+      activeOpacity={0.3}
+    >
       <View style={styles.cardGoals}>
-        <Text>{props.name}</Text>
+        <Text>{props.goal.name}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -22,8 +26,8 @@ const styles = StyleSheet.create({
 });
 
 export type Props = {
-  name: string;
-  onGoalPress: () => void;
+  goal: Goal;
+  onGoalPress: (flutter: string) => void;
 };
 
 export default GoalCard;

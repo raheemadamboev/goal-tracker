@@ -11,6 +11,12 @@ export default function App() {
     setGoals((currentGoals) => [...currentGoals, goal]);
   };
 
+  const onRemoveGoal = (flutter: string) => {
+    setGoals((currentGoals) => {
+      return currentGoals.filter((goal) => goal.flutter !== flutter);
+    });
+  };
+
   return (
     <View style={styles.screen}>
       <GoalInput onAddGoal={onAddGoal} />
@@ -18,7 +24,9 @@ export default function App() {
       <FlatList
         keyExtractor={(item, index) => item.flutter}
         data={goals}
-        renderItem={(goal) => <GoalCard name={goal.item.name} onGoalPress={() => {}} />}
+        renderItem={(goal) => (
+          <GoalCard goal={goal.item} onGoalPress={onRemoveGoal} />
+        )}
       />
     </View>
   );
