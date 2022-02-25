@@ -1,13 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 const GoalCard = (props: Props) => {
   return (
-    <TouchableWithoutFeedback onPress={props.onGoalPress}>
+    <TouchableOpacity onPress={props.onGoalPress} activeOpacity={0.3}>
       <View style={styles.cardGoals}>
         <Text>{props.name}</Text>
       </View>
-    </TouchableWithoutFeedback>
+    </TouchableOpacity>
   );
 };
 
