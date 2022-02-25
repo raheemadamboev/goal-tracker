@@ -18,7 +18,7 @@ export default function App() {
       <FlatList
         keyExtractor={(item, index) => item.flutter}
         data={goals}
-        renderItem={(goal) => <GoalCard name={goal.item.name} />}
+        renderItem={(goal) => <GoalCard name={goal.item.name} onGoalPress={() => {}} />}
       />
     </View>
   );
