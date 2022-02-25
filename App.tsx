@@ -12,7 +12,7 @@ import {
 
 export default function App() {
   const [goal, setGoal] = useState("");
-  const [goals, setGoals] = useState<{ key: string; text: string }[]>([]);
+  const [goals, setGoals] = useState<{ flutter: string; text: string }[]>([]);
 
   const setInput = (input: string) => {
     setGoal(input);
@@ -21,7 +21,7 @@ export default function App() {
   const onAddGoal = () => {
     setGoals((currentGoals) => [
       ...currentGoals,
-      { key: Math.random().toString(), text: goal },
+      { flutter: Math.random().toString(), text: goal },
     ]);
   };
 
@@ -39,6 +39,7 @@ export default function App() {
       <View />
       <StatusBar style="auto" />
       <FlatList
+        keyExtractor={(item, index) => item.flutter}
         data={goals}
         renderItem={(goal) => (
           <View style={styles.cardGoals}>
