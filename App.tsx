@@ -10,6 +10,7 @@ export default function App() {
 
   const onAddGoal = (goal: Goal) => {
     setGoals((currentGoals) => [...currentGoals, goal]);
+    setModalVisible(false);
   };
 
   const onRemoveGoal = (flutter: string) => {
@@ -19,13 +20,13 @@ export default function App() {
   };
 
   const onAddGoalPress = () => {
-    setModalVisible((visible) => !visible);
-  }
+    setModalVisible(true);
+  };
 
   return (
     <View style={styles.screen}>
       <StatusBar style="auto" />
-      <Button title="Add Goal" onPress={onAddGoalPress}/>
+      <Button title="Add Goal" onPress={onAddGoalPress} />
       <GoalInput onAddGoal={onAddGoal} visible={modalVisible} />
       <FlatList
         keyExtractor={(item, index) => item.flutter}

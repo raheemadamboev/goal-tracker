@@ -6,9 +6,16 @@ const GoalInput = (props: Props) => {
   const setInput = (input: string) => {
     setGoal(input);
   };
+  const onAddGoal = () => {
+    setGoal("");
+    props.onAddGoal({
+      flutter: Math.random().toString(),
+      name: goal,
+    });
+  };
 
   return (
-    <Modal visible={props.visible}>
+    <Modal visible={props.visible} animationType={"slide"}>
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Please write your goal here"
@@ -16,13 +23,7 @@ const GoalInput = (props: Props) => {
           onChangeText={setInput}
           value={goal}
         />
-        <Button
-          title="Add Goal"
-          onPress={props.onAddGoal.bind(this, {
-            flutter: Math.random().toString(),
-            name: goal,
-          })}
-        />
+        <Button title="Add Goal" onPress={onAddGoal} />
       </View>
     </Modal>
   );
@@ -30,8 +31,9 @@ const GoalInput = (props: Props) => {
 
 const styles = StyleSheet.create({
   inputContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: "column",
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center",
   },
   input: {
@@ -39,6 +41,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "black",
     padding: 10,
+    marginBottom: 20,
   },
 });
 
