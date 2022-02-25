@@ -1,13 +1,13 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
+import { View, Text, StyleSheet, TouchableNativeFeedback } from "react-native";
 
 const GoalCard = (props: Props) => {
   return (
-    <TouchableHighlight onPress={props.onGoalPress}>
+    <TouchableNativeFeedback onPress={props.onGoalPress}>
       <View style={styles.cardGoals}>
         <Text>{props.name}</Text>
       </View>
-    </TouchableHighlight>
+    </TouchableNativeFeedback>
   );
 };
 
