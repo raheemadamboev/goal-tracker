@@ -10,15 +10,22 @@ import {
 
 const GoalInput = (props: Props) => {
   const [goal, setGoal] = useState<string>("");
+  
   const setInput = (input: string) => {
     setGoal(input);
   };
-  const onAddGoal = () => {
+
+  const onCancel = () => {
     setGoal("");
+    props.onCancel();
+  };
+
+  const onAddGoal = () => {
     props.onAddGoal({
       flutter: Math.random().toString(),
       name: goal,
     });
+    setGoal("");
   };
 
   return (
@@ -32,7 +39,7 @@ const GoalInput = (props: Props) => {
         />
         <View style={styles.buttonContainer}>
           <Pressable style={styles.cancelButton}>
-            <Button title="Cancel" onPress={props.onCancel} color="red" />
+            <Button title="Cancel" onPress={onCancel} color="red" />
           </Pressable>
           <Pressable style={styles.cancelButton}>
             <Button title="Add Goal" onPress={onAddGoal} />
