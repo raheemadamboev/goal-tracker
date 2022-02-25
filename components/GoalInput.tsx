@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, StyleSheet } from "react-native";
+import { View, TextInput, Button, StyleSheet, Modal } from "react-native";
 
 const GoalInput = (props: Props) => {
   const [goal, setGoal] = useState<string>("");
@@ -8,21 +8,23 @@ const GoalInput = (props: Props) => {
   };
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        placeholder="Please write your goal here"
-        style={styles.input}
-        onChangeText={setInput}
-        value={goal}
-      />
-      <Button
-        title="Add Goal"
-        onPress={props.onAddGoal.bind(this, {
-          flutter: Math.random().toString(),
-          name: goal,
-        })}
-      />
-    </View>
+    <Modal visible={props.visible}>
+      <View style={styles.inputContainer}>
+        <TextInput
+          placeholder="Please write your goal here"
+          style={styles.input}
+          onChangeText={setInput}
+          value={goal}
+        />
+        <Button
+          title="Add Goal"
+          onPress={props.onAddGoal.bind(this, {
+            flutter: Math.random().toString(),
+            name: goal,
+          })}
+        />
+      </View>
+    </Modal>
   );
 };
 
@@ -47,6 +49,7 @@ export type Goal = {
 
 export type Props = {
   onAddGoal: (goal: Goal) => void;
+  visible: boolean;
 };
 
 export default GoalInput;
